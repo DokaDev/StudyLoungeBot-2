@@ -1,1 +1,4 @@
-﻿Console.ReadKey();
+﻿using ServerCore;
+
+CoreModule coreModule = new();
+await coreModule.StartServeAsync();

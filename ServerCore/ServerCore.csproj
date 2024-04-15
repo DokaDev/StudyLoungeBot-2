@@ -11,4 +11,10 @@
       <PackageReference Include="Discord.Net" Version="3.14.1" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Reference Include="AuthorizeKey">
+        <HintPath>..\..\AuthorizeKey\AuthorizeKey\bin\Debug\net8.0\AuthorizeKey.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
 </Project>
