@@ -1,5 +1,5 @@
 namespace LunchManager.Camco;
 
-public class CamcoContext {
+public interface ICamcoGetStrategy {
     
 }

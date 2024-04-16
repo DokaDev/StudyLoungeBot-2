@@ -1,7 +1,8 @@
 namespace LunchManager.Camco;
 
-public class CamcoHttpRequest : ICamcoMenuStrategy {
-    public void GetInfo() {
+public class CamcoHttpRequest {
+    public async Task GetInfo() {
         throw new NotImplementedException();
     }
+
 }
