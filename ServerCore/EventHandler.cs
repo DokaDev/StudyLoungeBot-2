@@ -3,27 +3,23 @@ using Discord.WebSocket;
 
 namespace ServerCore;
 
-public class EventHandler {
-    public CoreModule CoreModule { get; }
-
-    public EventHandler(CoreModule coreModule) {    // Dependency Injection
-        CoreModule = coreModule;
-    }
-
+public class EventHandler(CoreModule coreModule) {
     public async Task ReadyAsync() {
-        if(CoreModule.DiscordSocketClient is null) return;
-        if(CoreModule.InteractionService is null) return;
+        if(coreModule.DiscordSocketClient is null) return;
+        if(coreModule.InteractionService is null) return;
 
         await Console.Out.WriteLineAsync("Bot is ready to serve");
+        if(coreModule.DiscordSocketClient.ShardId == 0) {
+            await coreModule.InteractionService.RegisterCommandsToGuildAsync(AuthorizeKey.Guild.TestServer.GuildId);
+            await coreModule.InteractionService.RegisterCommandsGloballyAsync();
 
-        // await AuthorizeKey.Guild.TestServer.GuildId;
-        await CoreModule.InteractionService.RegisterCommandsToGuildAsync(AuthorizeKey.Guild.TestServer.GuildId);
-        await CoreModule.InteractionService.RegisterCommandsGloballyAsync();
+            // todo. update this to use the new command group manager
+        }
     }
 
     public async Task MessageReceivedAsync(SocketMessage msg) {
-        if(CoreModule.DiscordSocketClient is null) return;
-        if(msg.Author.Id == CoreModule.DiscordSocketClient.CurrentUser.Id) return; // Ignore self(bot)
+        if(coreModule.DiscordSocketClient is null) return;
+        if(msg.Author.Id == coreModule.DiscordSocketClient.CurrentUser.Id) return; // Ignore self(bot)
 
         await Console.Out.WriteLineAsync($"[Message/{msg.Channel.Id}] {msg.Author.Username}: {msg.Content}");
     }
@@ -33,6 +29,4 @@ public class EventHandler {
         IMessage msg = await before.GetOrDownloadAsync();
         Console.WriteLine($"{msg} -> {after}");
     }
-
-
 }

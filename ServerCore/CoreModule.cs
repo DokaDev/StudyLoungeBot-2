@@ -4,6 +4,8 @@ using Discord.Commands;
 using Discord.Interactions;
 using Discord.WebSocket;
 
+using Microsoft.Extensions.DependencyInjection;
+
 namespace ServerCore;
 
 public class CoreModule {
@@ -16,11 +18,13 @@ public class CoreModule {
         LogLevel = LogSeverity.Debug,
         AlwaysDownloadUsers = true
     };
+
     public CommandService? CommandService { get; private set; }
     public LoggingService? LoggingService { get; private set; }
     public InteractionService? InteractionService { get; private set; }
 
     public EventHandler? EventHandler { get; private set; }
+    public IServiceProvider? ServiceProvider { get; private set; }
 
     public bool IsRunning { get; private set; } = false;    // Running Flag
 
@@ -31,6 +35,8 @@ public class CoreModule {
         InteractionService = new(DiscordSocketClient);
         LoggingService = new(this);
         EventHandler = new(this);
+
+        ConfigureServices();
     }
 
     public async Task? StartServeAsync() {
@@ -50,5 +56,9 @@ public class CoreModule {
             var ctx = new SocketInteractionContext(DiscordSocketClient, interaction);
             await InteractionService.ExecuteCommandAsync(ctx, null);
         };
+    }
+
+    private void ConfigureServices() {
+
     }
 }
