@@ -1,17 +1,16 @@
 using System.Reflection;
+using Discord.Interactions;
 
 namespace ServerCore.Command;
 
 public class CommandGroupManager(CoreModule coreModule) {
-    public async Task LoadCommandAsync() {
-        Assembly asm = Assembly.GetEntryAssembly();
-        List<Type> moduleTypes = asm.GetTypes()
-            .Where(x => x.GetCustomAttributes<SlashCommandGroupAttribute>(true).Any())
-            .ToList();
-
-        foreach (var type in moduleTypes) {
-            var attribute = type.GetCustomAttributes<SlashCommandGroupAttribute>();
-            Console.WriteLine($"Loading {attribute} group: {type.Name}");
+    public async Task SetSlashCommandModulesAsync() {
+        Assembly assembly = Assembly.GetExecutingAssembly();
+        foreach(var type in assembly.GetTypes()) {
+            if(type.GetCustomAttributes(typeof(SlashCommandGroupAttribute), true).Length > 0
+               &&
+               typeof(InteractionModuleBase<SocketInteractionContext>).IsAssignableFrom(type))
+                await coreModule.InteractionService!.AddModuleAsync(type, null);
         }
     }
 }

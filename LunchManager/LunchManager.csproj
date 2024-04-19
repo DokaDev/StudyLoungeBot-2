@@ -10,8 +10,4 @@
       <PackageReference Include="HtmlAgilityPack" Version="1.11.60" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Folder Include="Suggest\Repo\" />
-    </ItemGroup>
-
 </Project>

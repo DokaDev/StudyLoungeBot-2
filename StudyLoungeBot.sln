@@ -6,6 +6,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LunchManager", "LunchManage
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountManager", "AccountManager\AccountManager.csproj", "{5CA887D5-9E8B-489E-A95D-77786B2302C5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusInfo", "BusInfo\BusInfo.csproj", "{161BDE71-B4CA-4B52-999E-6A933404B540}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{5CA887D5-9E8B-489E-A95D-77786B2302C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5CA887D5-9E8B-489E-A95D-77786B2302C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5CA887D5-9E8B-489E-A95D-77786B2302C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{161BDE71-B4CA-4B52-999E-6A933404B540}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{161BDE71-B4CA-4B52-999E-6A933404B540}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{161BDE71-B4CA-4B52-999E-6A933404B540}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{161BDE71-B4CA-4B52-999E-6A933404B540}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

@@ -1,2 +1,5 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=_002Fhome_002Fawesome_002FDesktop_002FMy_0020Solution_002FStudyLoungeBot_002D2_002FAuthorizeKey_002FAuthorizeKey_002Fbin_002FDebug_002Fnet8_002E0_002FAuthorizeKey_002Edll/@EntryIndexedValue">True</s:Boolean></wpf:ResourceDictionary>
+	<s:Boolean x:Key="/Default/AddReferences/RecentPaths/=_002Fhome_002Fawesome_002FDesktop_002FMy_0020Solution_002FStudyLoungeBot_002D2_002FAuthorizeKey_002FAuthorizeKey_002Fbin_002FDebug_002Fnet8_002E0_002FAuthorizeKey_002Edll/@EntryIndexedValue">True</s:Boolean>
+	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;
+  &lt;Assembly Path="/home/awesome/Desktop/My Solution/StudyLoungeBot-2/AuthorizeKey/AuthorizeKey/bin/Debug/net8.0/AuthorizeKey.dll" /&gt;
+&lt;/AssemblyExplorer&gt;</s:String></wpf:ResourceDictionary>
