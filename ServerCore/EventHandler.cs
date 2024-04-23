@@ -1,19 +1,25 @@
 using Discord;
 using Discord.WebSocket;
+using ServerCore.Command.CommandGroup;
 
 namespace ServerCore;
 
 public class EventHandler(CoreModule coreModule) {
     public async Task ReadyAsync() {
         if(coreModule.DiscordSocketClient is null) return;
-        if(coreModule.InteractionService is null) return;
+        // if(coreModule.InteractionService is null) return;
 
         await Console.Out.WriteLineAsync("Bot is ready to serve");
         if(coreModule.DiscordSocketClient.ShardId == 0) {
+            // Console.WriteLine("DEBUG :: Add Slash Command Modules");
+            // await coreModule.CommandGroupManager.SetSlashCommandModulesAsync();
+            // Console.WriteLine("DEBUG :: Completed Add Slash Command Modules");
+
+            await coreModule.InteractionService.AddModuleAsync<LifeStyleCommand>(null);
+            await coreModule.InteractionService.AddModuleAsync<GitHubCommand>(null);
+
             await coreModule.InteractionService.RegisterCommandsToGuildAsync(AuthorizeKey.Guild.TestServer.GuildId);
             await coreModule.InteractionService.RegisterCommandsGloballyAsync();
-
-            // todo. update this to use the new command group manager
         }
     }
 

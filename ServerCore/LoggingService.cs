@@ -27,6 +27,10 @@ public class LoggingService {
 
     public async Task PrintMessageAsync(string msg) {
         await Console.Out.WriteLineAsync(msg);
+
+        // int Integer
+        int a;
+        Int32 a_;
     }
 
     private async Task LogAsync(LogMessage msg) {

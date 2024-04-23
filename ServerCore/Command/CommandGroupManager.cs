@@ -4,13 +4,26 @@ using Discord.Interactions;
 namespace ServerCore.Command;
 
 public class CommandGroupManager(CoreModule coreModule) {
+    // public List<>
     public async Task SetSlashCommandModulesAsync() {
+        if (coreModule.InteractionService == null) {
+            Console.WriteLine("InteractionService is not initialized.");
+            return;
+        }
+
         Assembly assembly = Assembly.GetExecutingAssembly();
-        foreach(var type in assembly.GetTypes()) {
-            if(type.GetCustomAttributes(typeof(SlashCommandGroupAttribute), true).Length > 0
-               &&
-               typeof(InteractionModuleBase<SocketInteractionContext>).IsAssignableFrom(type))
-                await coreModule.InteractionService!.AddModuleAsync(type, null);
+        Console.WriteLine("Set Slash Command Modules");
+
+        foreach (var type in assembly.GetTypes()) {
+            if (type.IsSubclassOf(typeof(InteractionModuleBase<>)) &&
+                type.GetCustomAttributes(typeof(SlashCommandGroupAttribute), true).Length > 0) {
+                Console.WriteLine($"Adding Slash Command Module: {type.Name}");
+                try {
+                    await coreModule.InteractionService.AddModuleAsync(type, coreModule.ServiceProvider);
+                } catch (Exception ex) {
+                    Console.WriteLine($"Failed to add module {type.Name}: {ex.Message}");
+                }
+            }
         }
     }
 }

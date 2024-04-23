@@ -2,12 +2,10 @@ using Discord.Interactions;
 
 namespace ServerCore.Command.CommandGroup;
 
-[SlashCommandGroup("Account")]
+// [SlashCommandGroup("Account")]
 public class AccountCommand {
-    [SlashCommand("Register", "Register an account")]
-    public async Task RegisterAccountAsync() {
-
-    }
-
-
+    // [SlashCommand("Register", "Register an account")]
+    // public async Task RegisterAccountAsync() {
+    //
+    // }
 }

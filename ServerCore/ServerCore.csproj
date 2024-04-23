@@ -22,4 +22,9 @@
       <Folder Include="EmbedFormat\" />
     </ItemGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\LunchManager\LunchManager.csproj" />
+      <ProjectReference Include="..\WebNews\WebNews.csproj" />
+    </ItemGroup>
+
 </Project>
