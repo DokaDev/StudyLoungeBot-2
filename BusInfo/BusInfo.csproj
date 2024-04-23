@@ -6,4 +6,10 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Reference Include="AuthorizeKey">
+        <HintPath>..\..\AuthorizeKey\AuthorizeKey\bin\Debug\net8.0\AuthorizeKey.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
 </Project>
