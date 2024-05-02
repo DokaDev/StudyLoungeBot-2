@@ -1,4 +1,5 @@
 using System.Net;
+using System.Text;
 using Discord;
 using Discord.Interactions;
 using LunchManager.Camco;
@@ -9,7 +10,7 @@ namespace ServerCore.Command.CommandGroup;
 
 [SlashCommandGroup("LifeStyle")]
 public class LifeStyleCommand : InteractionModuleBase<SocketInteractionContext> {
-    [SlashCommand("bob", "양재 캠코 구내식당 메뉴")]
+    [SlashCommand("bobmenu", "양재 캠코 구내식당 메뉴")]
     public async Task GetLunchMenu() {
         CamcoImageOnly camcoImageOnly = new();
         string imgPath = await camcoImageOnly.GetMenuTableUrl();
@@ -22,33 +23,32 @@ public class LifeStyleCommand : InteractionModuleBase<SocketInteractionContext> 
         await RespondAsync(embed: embed.Build());
     }
 
-    [SlashCommand("bob2", "양재 캠코 구내식당 메뉴")]
+    [SlashCommand("bob", "양재 캠코 구내식당 메뉴2")]
     public async Task GetLunchMenu2() {
-        // CamcoImageOnly camcoImageOnly = new();
-        // string imgPath = await camcoImageOnly.GetMenuTableUrl();
-        // imgPath = imgPath.Replace("https://www.bobful.com/bbs/view_image.php?fn=%2Fdata%2Ffile%2Fcook%2F", "https://www.bobful.com/data/file/cook/");
-        //
-        // var embed = new EmbedBuilder()
-        //     .WithTitle("금주 구내식당 메뉴")
-        //     .WithImageUrl(imgPath);
-        //
-        // await RespondAsync(embed: embed.Build());
+        CamcoHttpRequest req = new();
+        List<string> meals = await req.RequestAsync();
 
-        CamcoHttpRequest camcoHttpRequest = new();
-        List<string> result = await camcoHttpRequest.RequestAsync();
+        // Today(MM-DD) Lunch Menu
+        DateOnly today = DateOnly.FromDateTime(DateTime.Now);
 
         var embed = new EmbedBuilder()
-            .WithTitle("금주 구내식당 메뉴")
+            .WithTitle($"금주 구내식당 메뉴({today.ToString()})")
             .WithColor(Color.Orange)      // Color.Blue
             .WithCurrentTimestamp();    // Current Time
 
-        foreach (var menu in result) {
-            embed.AddField(field => {
-                field.Name = menu;
-                field.Value = " ";
-                field.IsInline = false;
-            });
+        // foreach (var meal in meals) {
+        //     embed.AddField(field => {
+        //         field.Name = meal;
+        //         field.Value = " ";
+        //         field.IsInline = false;
+        //     });
+        // }
+        StringBuilder sb = new();
+        foreach (var meal in meals) {
+            sb.Append(meal + "\n");
         }
+
+        embed.AddField("메뉴", sb.ToString());
 
         await RespondAsync(embed: embed.Build());
     }
