@@ -1,5 +1,6 @@
 using System.Reflection;
 using Discord.Interactions;
+using ServerCore.Command.CommandGroup;
 
 namespace ServerCore.Command;
 
@@ -19,7 +20,8 @@ public class CommandGroupManager(CoreModule coreModule) {
                 type.GetCustomAttributes(typeof(SlashCommandGroupAttribute), true).Length > 0) {
                 Console.WriteLine($"Adding Slash Command Module: {type.Name}");
                 try {
-                    await coreModule.InteractionService.AddModuleAsync(type, coreModule.ServiceProvider);
+                    await coreModule.InteractionService!.AddModuleAsync(type, null);
+                    // typeof(type) -> class: type
                 } catch (Exception ex) {
                     Console.WriteLine($"Failed to add module {type.Name}: {ex.Message}");
                 }

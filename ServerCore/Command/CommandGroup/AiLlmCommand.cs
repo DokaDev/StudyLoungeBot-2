@@ -2,7 +2,7 @@ using Discord.Interactions;
 
 namespace ServerCore.Command.CommandGroup;
 
-[SlashCommandGroup("AiLlm")]
+// [SlashCommandGroup("AiLlm")]
 public class AiLlmCommand : InteractionModuleBase<SocketInteractionContext>  {
 
 }
