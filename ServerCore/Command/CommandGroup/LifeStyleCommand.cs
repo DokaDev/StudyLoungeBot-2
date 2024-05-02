@@ -22,6 +22,38 @@ public class LifeStyleCommand : InteractionModuleBase<SocketInteractionContext> 
         await RespondAsync(embed: embed.Build());
     }
 
+    [SlashCommand("bob2", "양재 캠코 구내식당 메뉴")]
+    public async Task GetLunchMenu2() {
+        // CamcoImageOnly camcoImageOnly = new();
+        // string imgPath = await camcoImageOnly.GetMenuTableUrl();
+        // imgPath = imgPath.Replace("https://www.bobful.com/bbs/view_image.php?fn=%2Fdata%2Ffile%2Fcook%2F", "https://www.bobful.com/data/file/cook/");
+        //
+        // var embed = new EmbedBuilder()
+        //     .WithTitle("금주 구내식당 메뉴")
+        //     .WithImageUrl(imgPath);
+        //
+        // await RespondAsync(embed: embed.Build());
+
+        CamcoHttpRequest camcoHttpRequest = new();
+        List<string> result = await camcoHttpRequest.RequestAsync();
+
+        var embed = new EmbedBuilder()
+            .WithTitle("금주 구내식당 메뉴")
+            .WithColor(Color.Orange)      // Color.Blue
+            .WithCurrentTimestamp();    // Current Time
+
+        foreach (var menu in result) {
+            embed.AddField(field => {
+                field.Name = menu;
+                field.Value = " ";
+                field.IsInline = false;
+            });
+        }
+
+        await RespondAsync(embed: embed.Build());
+    }
+
+
     [SlashCommand("news", "네이버 뉴스 검색")]
     public async Task GetNaverNews(
         [Summary("keywords", "검색어")] string keywords,
