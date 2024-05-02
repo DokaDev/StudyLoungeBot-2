@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusInfo", "BusInfo\BusInfo.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebNews", "WebNews\WebNews.csproj", "{88DF1211-A287-45B6-AC86-04117CC11A36}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthorizeKey", "..\AuthorizeKey\AuthorizeKey\AuthorizeKey.csproj", "{C4A4D4CE-7CD7-4A74-BA38-1F77575DDB67}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{88DF1211-A287-45B6-AC86-04117CC11A36}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88DF1211-A287-45B6-AC86-04117CC11A36}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88DF1211-A287-45B6-AC86-04117CC11A36}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4A4D4CE-7CD7-4A74-BA38-1F77575DDB67}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4A4D4CE-7CD7-4A74-BA38-1F77575DDB67}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4A4D4CE-7CD7-4A74-BA38-1F77575DDB67}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4A4D4CE-7CD7-4A74-BA38-1F77575DDB67}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
